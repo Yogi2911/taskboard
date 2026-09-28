@@ -25,7 +25,7 @@ pipeline {
 
   triggers {
     // Cron: every night around 02:00 (H spreads load; Jenkins picks the exact minute)
-    cron('H 5 * * *')
+    cron('H 5 * * * *')
 
   }
 
