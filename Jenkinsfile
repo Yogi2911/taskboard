@@ -25,10 +25,8 @@ pipeline {
 
   triggers {
     // Cron: every night around 02:00 (H spreads load; Jenkins picks the exact minute)
-    cron('H 2 * * *')
-    // Also build when GitHub sends a push webhook (see setup notes), or poll as a fallback:
-    // githubPush()
-    pollSCM('H/5 * * * *')
+    cron('H 5 * * *')
+
   }
 
   environment {
