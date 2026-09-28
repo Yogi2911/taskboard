@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Taskboard</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="top">
+    <h1>Taskboard</h1>
+    <input id="search" type="search" placeholder="Search tasks" aria-label="Search tasks">
+  </header>
+
+  <form id="add-form" class="add">
+    <input id="add-title" required maxlength="200" placeholder="What needs doing?" aria-label="Task title">
+    <select id="add-priority" aria-label="Priority">
+      <option value="low">Low</option>
+      <option value="medium" selected>Medium</option>
+      <option value="high">High</option>
+    </select>
+    <input id="add-due" type="date" aria-label="Due date">
+    <button type="submit">Add task</button>
+  </form>
+
+  <p id="error" class="error" role="alert" hidden></p>
+
+  <main class="board">
+    <section class="col" data-status="todo">
+      <h2>To do <span class="count"></span></h2>
+      <ul class="list"></ul>
+    </section>
+    <section class="col" data-status="doing">
+      <h2>In progress <span class="count"></span></h2>
+      <ul class="list"></ul>
+    </section>
+    <section class="col" data-status="done">
+      <h2>Done <span class="count"></span></h2>
+      <ul class="list"></ul>
+    </section>
+  </main>
+
+  <dialog id="edit-dialog">
+    <form method="dialog" id="edit-form">
+      <h3>Edit task</h3>
+      <label>Title <input id="edit-title" required maxlength="200"></label>
+      <label>Notes <textarea id="edit-notes" rows="4" maxlength="2000"></textarea></label>
+      <div class="row">
+        <label>Priority
+          <select id="edit-priority">
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+          </select>
+        </label>
+        <label>Due date <input id="edit-due" type="date"></label>
+      </div>
+      <div class="actions">
+        <button type="button" id="edit-delete" class="danger">Delete task</button>
+        <span class="spacer"></span>
+        <button type="button" id="edit-cancel" class="ghost">Cancel</button>
+        <button type="submit">Save changes</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
